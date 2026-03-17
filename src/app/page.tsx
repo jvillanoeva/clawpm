@@ -66,8 +66,7 @@ export default async function DashboardPage() {
                   textDecoration: 'none',
                   transition: 'border-color 0.15s',
                 }}
-                onMouseEnter={e => ((e.currentTarget as HTMLElement).style.borderColor = '#f97316')}
-                onMouseLeave={e => ((e.currentTarget as HTMLElement).style.borderColor = '#2a2a2a')}
+                
               >
                 <div style={{ fontSize: '13px', fontWeight: 500, color: '#f5f5f5' }}>{p.name}</div>
                 {p.description && (
