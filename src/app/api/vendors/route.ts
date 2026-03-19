@@ -25,7 +25,7 @@ export async function GET(request: Request) {
 
     if (type) {
       if (!VALID_VENDOR_TYPES.has(type)) {
-        return NextResponse.json({ error: `Invalid vendor type. Valid types: ${[...VALID_VENDOR_TYPES].join(', ')}` }, { status: 400 })
+        return NextResponse.json({ error: `Invalid vendor type. Valid types: ${Array.from(VALID_VENDOR_TYPES).join(', ')}` }, { status: 400 })
       }
       query = query.eq('vendor_type', type)
     }
@@ -49,7 +49,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'company_name must be 200 characters or less' }, { status: 400 })
     }
     if (!body.vendor_type || !VALID_VENDOR_TYPES.has(body.vendor_type)) {
-      return NextResponse.json({ error: `vendor_type is required and must be one of: ${[...VALID_VENDOR_TYPES].join(', ')}` }, { status: 400 })
+      return NextResponse.json({ error: `vendor_type is required and must be one of: ${Array.from(VALID_VENDOR_TYPES).join(', ')}` }, { status: 400 })
     }
     if (body.email !== undefined && typeof body.email === 'string' && !body.email.includes('@')) {
       return NextResponse.json({ error: 'email must be a valid email address' }, { status: 400 })
