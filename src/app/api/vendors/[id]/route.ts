@@ -51,7 +51,7 @@ export async function PUT(
       }
     }
     if (body.vendor_type !== undefined && !VALID_VENDOR_TYPES.has(body.vendor_type)) {
-      return NextResponse.json({ error: `vendor_type must be one of: ${[...VALID_VENDOR_TYPES].join(', ')}` }, { status: 400 })
+      return NextResponse.json({ error: `vendor_type must be one of: ${Array.from(VALID_VENDOR_TYPES).join(', ')}` }, { status: 400 })
     }
     if (body.email !== undefined && typeof body.email === 'string' && !body.email.includes('@')) {
       return NextResponse.json({ error: 'email must be a valid email address' }, { status: 400 })
