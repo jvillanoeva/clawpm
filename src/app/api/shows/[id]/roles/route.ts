@@ -40,7 +40,7 @@ export async function POST(
     const body = await request.json()
 
     if (!body.role_type || !VALID_ROLE_TYPES.has(body.role_type)) {
-      return NextResponse.json({ error: `role_type is required and must be one of: ${[...VALID_ROLE_TYPES].join(', ')}` }, { status: 400 })
+      return NextResponse.json({ error: `role_type is required and must be one of: ${Array.from(VALID_ROLE_TYPES).join(', ')}` }, { status: 400 })
     }
     if (!body.person_name || typeof body.person_name !== 'string' || body.person_name.trim().length === 0) {
       return NextResponse.json({ error: 'person_name is required' }, { status: 400 })
@@ -98,7 +98,7 @@ export async function PUT(
     }
 
     if (body.role_type !== undefined && !VALID_ROLE_TYPES.has(body.role_type)) {
-      return NextResponse.json({ error: `role_type must be one of: ${[...VALID_ROLE_TYPES].join(', ')}` }, { status: 400 })
+      return NextResponse.json({ error: `role_type must be one of: ${Array.from(VALID_ROLE_TYPES).join(', ')}` }, { status: 400 })
     }
     if (body.person_name !== undefined) {
       if (typeof body.person_name !== 'string' || body.person_name.trim().length === 0) {
