@@ -29,14 +29,14 @@ export async function GET(
 
     if (section) {
       if (!VALID_SECTIONS.has(section)) {
-        return NextResponse.json({ error: `Invalid section. Valid sections: ${[...VALID_SECTIONS].join(', ')}` }, { status: 400 })
+        return NextResponse.json({ error: `Invalid section. Valid sections: ${Array.from(VALID_SECTIONS).join(', ')}` }, { status: 400 })
       }
       query = query.eq('section', section)
     }
 
     if (status) {
       if (!VALID_STATUSES.has(status)) {
-        return NextResponse.json({ error: `Invalid status. Valid statuses: ${[...VALID_STATUSES].join(', ')}` }, { status: 400 })
+        return NextResponse.json({ error: `Invalid status. Valid statuses: ${Array.from(VALID_STATUSES).join(', ')}` }, { status: 400 })
       }
       query = query.eq('status', status)
     }
