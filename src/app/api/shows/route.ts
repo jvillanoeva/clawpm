@@ -68,7 +68,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'show_date is required in YYYY-MM-DD format' }, { status: 400 })
     }
     if (body.status !== undefined && !VALID_STATUSES.has(body.status)) {
-      return NextResponse.json({ error: `status must be one of: ${[...VALID_STATUSES].join(', ')}` }, { status: 400 })
+      return NextResponse.json({ error: `status must be one of: ${Array.from(VALID_STATUSES).join(', ')}` }, { status: 400 })
     }
     if (body.setup_answers !== undefined && (typeof body.setup_answers !== 'object' || body.setup_answers === null || Array.isArray(body.setup_answers))) {
       return NextResponse.json({ error: 'setup_answers must be a JSON object' }, { status: 400 })
