@@ -96,7 +96,7 @@ function groupBySection(tasks: ShowTask[]): [string, ShowTask[]][] {
   }
   // Sort by predefined order, unknown sections go last alphabetically
   const known = SECTION_ORDER.filter(s => map.has(s))
-  const unknown = [...map.keys()].filter(s => !SECTION_ORDER.includes(s)).sort()
+  const unknown = Array.from(map.keys()).filter(s => !SECTION_ORDER.includes(s)).sort()
   return [...known, ...unknown].map(s => [s, map.get(s)!])
 }
 
